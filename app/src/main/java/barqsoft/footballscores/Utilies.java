@@ -1,5 +1,8 @@
 package barqsoft.footballscores;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by yehya khaled on 3/3/2015.
  */
@@ -84,4 +87,11 @@ public class Utilies
             default: return R.drawable.no_icon;
         }
     }
+
+    public static String getToday() {
+        Date fragmentdate = new Date(System.currentTimeMillis());
+        SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
+        return mformat.format(fragmentdate);
+    }
+
 }
