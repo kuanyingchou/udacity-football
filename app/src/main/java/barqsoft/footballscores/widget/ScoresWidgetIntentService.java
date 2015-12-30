@@ -45,7 +45,7 @@ public class ScoresWidgetIntentService extends IntentService {
         // Get today's data from the ContentProvider
 
         Cursor data = getContentResolver().query(DatabaseContract.scores_table.buildScoreWithDate(),
-                null, null, new String[]{ Utilies.getToday() }, null);
+                null, null, new String[]{ Utilies.getToday(0) }, null);
         if (data == null) {
             return;
         }

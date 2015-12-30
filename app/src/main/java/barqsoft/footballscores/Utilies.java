@@ -88,8 +88,8 @@ public class Utilies
         }
     }
 
-    public static String getToday() {
-        Date fragmentdate = new Date(System.currentTimeMillis());
+    public static String getToday(long delta) {
+        Date fragmentdate = new Date(System.currentTimeMillis() + delta);
         SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
         return mformat.format(fragmentdate);
     }
