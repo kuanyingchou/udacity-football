@@ -45,7 +45,7 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                 // that calls use our process and permission
                 final long identityToken = Binder.clearCallingIdentity();
                 data = getContentResolver().query(DatabaseContract.scores_table.buildScoreWithDate(),
-                        null, null, new String[]{ Utilies.getToday(-2*1000*60*60*24) }, null);
+                        null, null, new String[]{ Utilies.getToday(0) }, null);
                 Binder.restoreCallingIdentity(identityToken);
             }
 
@@ -75,7 +75,16 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                         data.getString(data.getColumnIndex(DatabaseContract.scores_table.HOME_GOALS_COL));
                 String awayGoals =
                         data.getString(data.getColumnIndex(DatabaseContract.scores_table.AWAY_GOALS_COL));
-                views.setTextViewText(R.id.scores_item, homeGoals + " : " + awayGoals);
+                String home = data.getString(data.getColumnIndex(DatabaseContract.scores_table.HOME_COL));
+                String away = data.getString(data.getColumnIndex(DatabaseContract.scores_table.AWAY_COL));
+                String time = data.getString(data.getColumnIndex(DatabaseContract.scores_table.TIME_COL));
+
+                views.setTextViewText(R.id.widget_item_time, time);
+
+                views.setTextViewText(R.id.widget_item_home, home);
+                views.setTextViewText(R.id.widget_item_away, away);
+                views.setTextViewText(R.id.widget_item_home_score, homeGoals);
+                views.setTextViewText(R.id.widget_item_away_score, awayGoals);
 
 //                int weatherId = data.getInt(INDEX_WEATHER_CONDITION_ID);
 //                int weatherArtResourceId = Utility.getIconResourceForWeatherCondition(weatherId);

@@ -52,7 +52,10 @@
             android:gravity="center"
             android:fontFamily="sans-serif-condensed"
             android:textAppearance="?android:textAppearanceLarge"
-            android:text="@string/empty_scores_list"/>
+            android:text="@string/empty_scores_list"
+            android:textColor="@color/primary_text"
+            />
+
         </FrameLayout>
 
 </LinearLayout>
