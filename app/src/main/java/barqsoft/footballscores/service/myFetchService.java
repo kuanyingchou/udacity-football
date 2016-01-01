@@ -42,8 +42,8 @@ public class myFetchService extends IntentService
     @Override
     protected void onHandleIntent(Intent intent)
     {
-        getData("n2");
-        getData("p2");
+        getData("n2"); // ken: next 2 days
+        getData("p2"); // ken: previous 2 days, probably getting today's data twice
 
         return;
     }
