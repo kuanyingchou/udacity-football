@@ -71,10 +71,10 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                 RemoteViews views = new RemoteViews(getPackageName(),
                         R.layout.widget_detail_list_item);
 
-                String homeGoals =
-                        data.getString(data.getColumnIndex(DatabaseContract.scores_table.HOME_GOALS_COL));
-                String awayGoals =
-                        data.getString(data.getColumnIndex(DatabaseContract.scores_table.AWAY_GOALS_COL));
+                int homeGoals =
+                        data.getInt(data.getColumnIndex(DatabaseContract.scores_table.HOME_GOALS_COL));
+                int awayGoals =
+                        data.getInt(data.getColumnIndex(DatabaseContract.scores_table.AWAY_GOALS_COL));
                 String home = data.getString(data.getColumnIndex(DatabaseContract.scores_table.HOME_COL));
                 String away = data.getString(data.getColumnIndex(DatabaseContract.scores_table.AWAY_COL));
                 String time = data.getString(data.getColumnIndex(DatabaseContract.scores_table.TIME_COL));
@@ -83,8 +83,8 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
 
                 views.setTextViewText(R.id.widget_item_home, home);
                 views.setTextViewText(R.id.widget_item_away, away);
-                views.setTextViewText(R.id.widget_item_home_score, homeGoals);
-                views.setTextViewText(R.id.widget_item_away_score, awayGoals);
+                views.setTextViewText(R.id.widget_item_home_score, showGoals(homeGoals));
+                views.setTextViewText(R.id.widget_item_away_score, showGoals(awayGoals));
 
 //                int weatherId = data.getInt(INDEX_WEATHER_CONDITION_ID);
 //                int weatherArtResourceId = Utility.getIconResourceForWeatherCondition(weatherId);
@@ -163,5 +163,9 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                 return true;
             }
         };
+    }
+
+    private CharSequence showGoals(int goals) {
+        return (goals >= 0) ? String.valueOf(goals) : "-";
     }
 }
