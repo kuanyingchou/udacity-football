@@ -19,4 +19,9 @@
             android:divider="@android:color/transparent"
             android:dividerHeight="15sp"
             />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id = "@+id/empty_list"
+            android:text="@string/empty_scores_list"/>
 </FrameLayout>

@@ -59,6 +59,7 @@ public class MainScreenFragment extends Fragment implements LoaderManager.Loader
                 mAdapter.notifyDataSetChanged();
             }
         });
+        score_list.setEmptyView(rootView.findViewById(R.id.empty_list));
         return rootView;
     }
 
