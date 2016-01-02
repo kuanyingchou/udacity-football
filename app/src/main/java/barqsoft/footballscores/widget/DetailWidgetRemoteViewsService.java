@@ -45,7 +45,11 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                 // that calls use our process and permission
                 final long identityToken = Binder.clearCallingIdentity();
                 data = getContentResolver().query(DatabaseContract.scores_table.buildScoreWithDate(),
-                        null, null, new String[]{ Utilies.getToday(0) }, null);
+                        null, null, new String[]{
+                                //Utilies.getToday(-1000*60*60*24) // yesterday
+                                //Utilies.getToday(1000*60*60*24) // tomorrow
+                                Utilies.getToday(0)
+                        }, null);
                 Binder.restoreCallingIdentity(identityToken);
             }
 
